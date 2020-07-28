@@ -21,7 +21,7 @@ jobs:
 
     - id: files
       run: |
-        git fetch florian master
+        git fetch origin master
         git --no-pager diff --name-only HEAD...FETCH_HEAD
         FILES=$(git --no-pager diff --name-only HEAD...FETCH_HEAD 2>/dev/null)
         echo "::set-output name=all::$FILES"
