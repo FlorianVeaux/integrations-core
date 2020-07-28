@@ -13,12 +13,14 @@ def compute_sha256(filename):
     return sha256_hash.hexdigest()
 
 
+print(sys.argv)
 updated_link_files = [f for f in sys.argv[1:] if fnmatch(f, '.in-toto/tag.*.link')]
 if len(updated_link_files) < 0:
     raise Exception("The release-hash-check should only run upon modification of a link file.")
 if len(updated_link_files) > 1:
     raise Exception("There should never be two different link files modified at the same time.")
 
+print(updated_link_files)
 with open(updated_link_files[0], 'r') as f:
     link_file = json.load(f)
 
