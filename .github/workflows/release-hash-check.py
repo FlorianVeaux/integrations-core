@@ -26,7 +26,7 @@ with open(updated_link_files[0], 'r') as f:
 
 products = link_file['signed']['products']
 
-for product, signatures in products.iteritems():
+for product, signatures in products.items():
     expected_sha = signatures['sha256']
     if expected_sha != compute_sha256(product):
         raise Exception(
