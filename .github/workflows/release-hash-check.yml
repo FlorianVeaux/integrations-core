@@ -21,6 +21,8 @@ jobs:
 
     - id: files
       run: |
+        echo "${{ github.sha }}"
+        git --no-pager diff --name-only ${{ github.sha }}...master
         FILES=$(git --no-pager diff --name-only ${{ github.sha }}...master 2>/dev/null)
         echo "::set-output name=all::$FILES"
 
