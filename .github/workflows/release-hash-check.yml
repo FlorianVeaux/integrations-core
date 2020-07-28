@@ -20,9 +20,9 @@ jobs:
         python-version: '3.8'
 
     - id: files
-      uses: jitterbit/get-changed-files@v1
-      with:
-        format: 'json'
+      run: |
+        FILES=$(git --no-pager diff --name-only ${{ github.sha }}...master 2>/dev/null)
+        echo "::set-output name=all::$FILES"
 
     - run: |
         python .github/workflows/release-hash-check.py ${{ steps.files.outputs.all }}
