@@ -30,7 +30,7 @@ for product, signatures in products.items():
     expected_sha = signatures['sha256']
     if expected_sha != compute_sha256(product):
         raise Exception(
-            f"File {product} currently has a different sha that what has been signed."
+            f"File {product} currently has a different sha that what has been signed. "
             f"Is your branch up to date with master?"
         )
 
