@@ -21,10 +21,9 @@ jobs:
 
     - id: files
       run: |
-        git status
-        git fetch master
-        git --no-pager diff --name-only HEAD...master
-        FILES=$(git --no-pager diff --name-only ${{ github.ref }}...master 2>/dev/null)
+        git fetch florian master
+        git --no-pager diff --name-only HEAD...FETCH_HEAD
+        FILES=$(git --no-pager diff --name-only HEAD...FETCH_HEAD 2>/dev/null)
         echo "::set-output name=all::$FILES"
 
     - run: |
