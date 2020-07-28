@@ -13,12 +13,16 @@ def compute_sha256(filename):
     return sha256_hash.hexdigest()
 
 
-print(sys.argv)
+def error(*args):
+    print(*args, file=sys.stderr)
+    sys.exit(1)
+
+
 updated_link_files = [f for f in sys.argv[1:] if fnmatch(f, '.in-toto/tag.*.link')]
 if len(updated_link_files) < 0:
-    raise Exception("The release-hash-check should only run upon modification of a link file.")
+    error("The release-hash-check should only run upon modification of a link file.")
 if len(updated_link_files) > 1:
-    raise Exception("There should never be two different link files modified at the same time.")
+    error("There should never be two different link files modified at the same time.")
 
 print(updated_link_files)
 with open(updated_link_files[0], 'r') as f:
@@ -29,7 +33,7 @@ products = link_file['signed']['products']
 for product, signatures in products.items():
     expected_sha = signatures['sha256']
     if expected_sha != compute_sha256(product):
-        raise Exception(
+        error(
             f"File {product} currently has a different sha that what has been signed. "
             f"Is your branch up to date with master?"
         )
