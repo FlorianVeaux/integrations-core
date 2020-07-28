@@ -24,9 +24,9 @@ if len(updated_link_files) < 0:
 if len(updated_link_files) > 1:
     error("There should never be two different link files modified at the same time.")
 
-print(updated_link_files)
-with open(updated_link_files[0], 'r') as f:
-    link_file = json.load(f)
+link_file = updated_link_files[0]
+with open(link_file, 'r') as f:
+    content = json.load(f)
 
 products = link_file['signed']['products']
 
@@ -34,7 +34,7 @@ for product, signatures in products.items():
     expected_sha = signatures['sha256']
     if expected_sha != compute_sha256(product):
         error(
-            f"File {product} currently has a different sha that what has been signed. "
+            f"File {product} currently has a different sha than what has been signed. "
             f"Is your branch up to date with master?"
         )
 
