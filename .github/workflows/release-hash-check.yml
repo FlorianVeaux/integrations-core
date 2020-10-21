@@ -13,6 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        ref: 'master'
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -25,8 +27,12 @@ jobs:
         FILES=$(git --no-pager diff --name-only HEAD...FETCH_HEAD 2>/dev/null | tr "\n" " ")
         echo "::set-output name=all::$FILES"
 
-    - run: |
+    - id: Merge branch on master
+      env:
+        HEAD_BRANCH: ${{ github.head_ref }}
+      run: |
+        git fetch $HEAD_BRANCH
         git config user.name "release-hash-check"
         git config user.email "<>"
-        git merge --no-commit --no-edit --allow-unrelated-histories origin/master
+        git merge --no-commit --no-edit origin/$HEAD_BRANCH
     - run: python .github/workflows/release-hash-check.py ${{ steps.files.outputs.all }}
