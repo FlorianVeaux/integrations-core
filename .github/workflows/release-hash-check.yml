@@ -29,6 +29,7 @@ jobs:
       env:
         HEAD_BRANCH: ${{ github.head_ref }}
       run: |
+        git fetch origin $HEAD_BRANCH
         git checkout origin/master
         git config user.name "release-hash-check"
         git config user.email "<>"
