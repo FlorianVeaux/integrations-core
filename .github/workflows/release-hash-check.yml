@@ -25,4 +25,5 @@ jobs:
         FILES=$(git --no-pager diff --name-only HEAD...FETCH_HEAD 2>/dev/null | tr "\n" " ")
         echo "::set-output name=all::$FILES"
 
+    - run: git merge --commit --no-edit --allow-unrelated-histories origin/master
     - run: python .github/workflows/release-hash-check.py ${{ steps.files.outputs.all }}
