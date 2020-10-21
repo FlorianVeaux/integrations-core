@@ -100,6 +100,10 @@
      <lastmod>2020-02-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
+     <loc>https://datadoghq.dev/integrations-core/tutorials/jmx/integration/</loc>
+     <lastmod>2020-02-02</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
      <loc>https://datadoghq.dev/integrations-core/tutorials/jmx/tools/</loc>
      <lastmod>2020-02-02</lastmod>
      <changefreq>daily</changefreq>
@@ -133,6 +137,10 @@
      <changefreq>daily</changefreq>
     </url><url>
      <loc>https://datadoghq.dev/integrations-core/architecture/vsphere/</loc>
+     <lastmod>2020-02-02</lastmod>
+     <changefreq>daily</changefreq>
+    </url><url>
+     <loc>https://datadoghq.dev/integrations-core/architecture/win32_event_log/</loc>
      <lastmod>2020-02-02</lastmod>
      <changefreq>daily</changefreq>
     </url><url>
