@@ -31,7 +31,7 @@ jobs:
       env:
         HEAD_BRANCH: ${{ github.head_ref }}
       run: |
-        git fetch $HEAD_BRANCH
+        git fetch origin/$HEAD_BRANCH
         git config user.name "release-hash-check"
         git config user.email "<>"
         git merge --no-commit --no-edit origin/$HEAD_BRANCH
